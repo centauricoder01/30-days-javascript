@@ -1,3 +1,3 @@
 ## This is the Chai and code project that I am doing...
 
-([link](https://courses.chaicode.com/learn/batch/30-days-of-Javascript-challenge))
+([Link to the Course](https://courses.chaicode.com/learn/batch/30-days-of-Javascript-challenge))
