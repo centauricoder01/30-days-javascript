@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day - 9</title>
+  </head>
+  <body>
+    <h1 class="firstH1Tag" id="firstH1Tag">Hello world</h1>
+    <p class="firstParaTag" id="firstParaTag">This is First Para</p>
+    <p class="removethisclass">class of this para will be removed</p>
+    <button onclick="changeText()">Change Text</button>
+    <img
+      src="https://www.mantri.in/pinnacle/images/about.jpg"
+      alt="Talest Building"
+      id="changesrc"
+    />
+    <div id="appendingMorediv"></div>
+  </body>
+  <script>
+    // ACTIVITY - 1
+    const selectH1Tag = document.getElementById("firstH1Tag");
+    const selectParaTag = document.getElementsByClassName("firstParaTag");
+    function changeText() {
+      selectH1Tag.innerText = "This is Changed Text"; // task 1
+      selectParaTag[0].style.backgroundColor = "red"; // task 2
+    }
+
+    // ACTIVITY - 2
+
+    const appendNewDiv = document.getElementById("appendingMorediv");
+    const createNewDiv = document.createElement("div");
+    const createNewPara = document.createElement("p");
+    createNewPara.innerText =
+      "This is the new appended text and i am chaning in new way";
+
+    createNewDiv.append(createNewPara);
+    appendNewDiv.append(createNewDiv);
+
+    const createNewUiTag = document.createElement("ul");
+    const createNewLiTag = document.createElement("li");
+    createNewLiTag.innerText = "This is the value of the li tag";
+    createNewUiTag.append(createNewLiTag);
+    appendNewDiv.append(createNewUiTag);
+
+    // ACTIVITY - 3
+
+    const removeElement = document.getElementById("firstH1Tag");
+    removeElement.remove(); // remove specific element
+
+    appendNewDiv.removeChild(appendNewDiv.lastChild); // remove last child
+
+    // ACTIVITY - 4
+
+    const changeImgSrc = document.getElementById("changesrc");
+    changeImgSrc.src =
+      "https://planetprop.in/wp-content/uploads/2016/08/mantri-pinnacle.jpg";
+
+    const removeClassOfSpecificElement =
+      document.getElementsByClassName("removethisclass");
+
+    removeClassOfSpecificElement.classList.remove("removethisclass");
+
+    // ACTIVITY  - 5
+
+    changeImgSrc.addEventListener("mouseover", () => {
+      changeImgSrc.style.borderRadius = "2rem";
+    });
+  </script>
+</html>
