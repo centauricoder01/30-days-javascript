@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day - 10</title>
+  </head>
+  <body>
+    <h1 id="h1tag">Hello world</h1>
+    <p id="paratag">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi labore et
+      dolores earum, illum provident aspernatur ea perspiciatis rem assumenda.
+    </p>
+    <button id="changetextcontent">Change Text Content</button>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/b/be/Random_pyramids.jpg"
+      alt="random-image"
+      width="500"
+      id="changevisibility"
+    />
+    <button id="showvisibility">show visibility</button>
+
+    <h1>ACTIVITY - 2</h1>
+    <h1 id="changeonmouseover">change background image on mouse over</h1>
+
+    <h1>ACTIVITY - 3</h1>
+
+    <input type="text" placeholder="keydown Event listner" id="keydownevent" />
+
+    <input type="text" placeholder="Keyup Event listner" id="keyupevent" />
+
+    <p id="showkeyupvalueoverhere"></p>
+
+    <h1>ACTIVITY - 4</h1>
+
+    <form id="submitform">
+      <input type="text" placeholder="name" id="name" />
+      <input type="number" placeholder="age" id="age" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <select id="fruit">
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="cherry">Cherry</option>
+    </select>
+
+    <h1>ACTIVITY - 5</h1>
+
+    <ul id="myList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+    </ul>
+
+    <div id="parent">
+      <button id="addButton">Add List Item</button>
+      <ul id="myList">
+        <!-- Initial list items, if any -->
+      </ul>
+    </div>
+  </body>
+  <script>
+    // ACTIVITY - 1 basic event handing
+    const accessParaTag = document.getElementById("paratag");
+    const accessButtonTag = document.getElementById("changetextcontent");
+
+    accessButtonTag.addEventListener("click", () => {
+      accessParaTag.innerText = "This is new updated text";
+    });
+
+    const accessvisibilityImage = document.getElementById("changevisibility");
+    const accessvisibilityButton = document.getElementById("showvisibility");
+
+    let visibility = true;
+    accessvisibilityButton.addEventListener("dblclick", () => {
+      if (visibility) {
+        accessvisibilityImage.style.display = "none";
+        visibility = false;
+      } else {
+        visibility = true;
+        accessvisibilityImage.style.display = "block";
+      }
+    });
+
+    // ACTIVITY - 2 mouse event
+
+    const element = document.getElementById("changeonmouseover");
+
+    element.addEventListener("mouseover", handleMouseEvents);
+    element.addEventListener("mouseout", handleMouseEvents);
+
+    function handleMouseEvents(event) {
+      if (event.type === "mouseover") {
+        event.target.style.backgroundColor = "red";
+      } else if (event.type === "mouseout") {
+        event.target.style.backgroundColor = "white";
+      }
+    }
+
+    // ACTIVITY - 3  KEYWORD EVENT
+
+    const keydownevent = document
+      .getElementById("keydownevent")
+      .addEventListener("keydown", (event) => {
+        console.log(event.key);
+      });
+
+    const showkeyupvalueoverhere = document.getElementById(
+      "showkeyupvalueoverhere"
+    );
+    let getallthekeyupvalues = "";
+    const keyupevent = document
+      .getElementById("keyupevent")
+      .addEventListener("keyup", (event) => {
+        getallthekeyupvalues += event.key;
+        showkeyupvalueoverhere.innerHTML = getallthekeyupvalues;
+      });
+
+    //   ACTIVITY - 4
+
+    const selectForm = document.getElementsByTagName("form")[0];
+
+    selectForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const firstInputtag = document.getElementById("name").value;
+      const secondInputtag = document.getElementById("age").value;
+
+      console.log(firstInputtag, "This is first value");
+      console.log(secondInputtag, "This is second value");
+    });
+
+    const selectElement = document.getElementById("fruit");
+
+    selectElement.addEventListener("change", () => {
+      const selectedValue = selectElement.value;
+      console.log(selectedValue, "This is the selected value");
+    });
+
+    // ACTIVITY - 5 EVENT DELIGATION
+
+    const list = document.getElementById("myList");
+
+    list.addEventListener("click", (event) => {
+      if (event.target && event.target.nodeName === "LI") {
+        console.log(event.target.textContent, "This is the clicked item text");
+      }
+    });
+
+    let itemCount = 0;
+
+    addButton.addEventListener("click", () => {
+      const newItem = document.createElement("li");
+      itemCount++;
+      newItem.textContent = `Item ${itemCount}`;
+      list.appendChild(newItem);
+    });
+  </script>
+</html>
